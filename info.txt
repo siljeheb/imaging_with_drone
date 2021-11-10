@@ -1,0 +1,123 @@
+Copy all the files from https://github.com/ahmedfgad/Mask-RCNN-TF2/tree/master/mrcnn to - 
+C:\Users\ajitj\OneDrive - Universitetet i Agder\Teaching\MasterProgram\Applied ML and Robotics\MAS512-G_AJ_2021\CNN_ML\ObjectDetection\mrcnn
+
+The model.py has error so rename it to model1.py
+
+
+
+USE THE FILES FROM THIS - WORKS
+https://github.com/akTwelve/Mask_RCNN
+fromt the link above, copy the content of mrcnn folder -  of model.py and otheres and paste in C:\Users\ajitj\OneDrive - Universitetet i Agder\Teaching\MasterProgram\Applied ML and Robotics\MAS512-G_AJ_2021\CNN_ML\ObjectDetection\mrcnn\model.py, and rest of the files
+
+To detect the object:
+create a root directory - Object detection
+make a folder mrcnn
+	copy the files from 	https://github.com/akTwelve/Mask_RCNN/tree/master/mrcnn to the above 	mrcnn folder
+download pretrained model on coco data set - mask_rcnn_coco.h5
+create a python file mask-rcnn-prediction.py
+	to change the label colour and size- see visualization.py and see 	comments aj
+	mask-rcnn-prediction.py - use the weights - mask_rcnn_coco.5 in 
+	model.load_weights(filepath="mask_rcnn_coco.h5", 
+                   by_name=True) #mask_rcnn_coco.h5	
+	mask-rcnn-prediction.py - image = cv2.imread("sample_image2.jpg") 		#sample_image2.jpg. Changes the images as desired
+
+Folder structure:
+
+images: - images to train
+	test:- test image
+	val: - validation image
+logs: - contain the wights/model after training
+mrcnn: - template folder for mask RCNN
+	__init__.py
+	config.py
+	model.py
+	parallel_model.py
+	utils.py
+	visualize.py
+samples:
+	baloon:
+
+bollard.py - codes to train custom bollard
+image_22_scaled.png - validation image to validate the trained model
+info.txt - this file
+mask_rcnn_balloon_0003.h5 - trained model after training as from bollard.py
+	originally the model is located in logs\. Copy from there	
+mask_rcnn_coco.h5 - initial weights obtained from coco data set. 
+sample_image, sammple_image1, sample_iamge2.jpg - images to test the prediction as in mask_rcnn-prediction.py
+mask_rcnn-prediction.py - codes to detect coco objects
+bollard_detection.py - codes to detect the custom ojects as the model trained from bollard.py
+
+	
+
+
+For custom object detection e.g. detect bollard:
+TF2: https://github.com/akTwelve/Mask_RCNN/tree/master/mrcnn (use this)
+TF1: https://engineering.matterport.com/splash-of-color-instance-segmentation-with-mask-r-cnn-and-tensorflow-7c761e238b46
+
+For transfer learning i.e. to train from initial coco weight- type in Anaconda terminal - 
+	change the directory to ObjectDetection i.e. > cd C:\Users\ajitj\OneDrive - Universitetet i Agder\Teaching\MasterProgram\Applied ML and Robotics\MAS512-G_AJ_2021\CNN_ML\ObjectDetection
+	type - python bollard.py train --dataset=images\ --weights=coco
+
+install skikit 0.16.2 - pip install -U scikit-image==0.16.2
+choose image size 512x512
+
+create a root directory - ObjectDetection
+make a folder mrcnn
+copy the files from https://github.com/akTwelve/Mask_RCNN/tree/master/mrcnn to the above mrcnn folder
+Create a folder - images
+	Create two folders - train and val inside image folder
+	Copy some images in both of them.
+	Annoate the images 
+		First annoate the images in train folder using - 			https://www.robots.ox.ac.uk/~vgg/software/via/. 
+		Select the option online - 			https://www.robots.ox.ac.uk/~vgg/software/via/via.html
+	Choose the option - polygon. 
+	Do not choose rectangle. This raises error - see https://github.com/matterport/Mask_RCNN/issues/503
+		if you change to rectangle, you have to change the codes see https://github.com/matterport/Mask_RCNN/issues/503
+	For details see -	https://www.robots.ox.ac.uk/~vgg/software/via/via.html
+	The output is selected to be json format
+	Then annoate the validation set
+	Keep the annoaated .json file name as - via_region_data.json because bollard.py has this name defined.
+	bollard.py
+		annotations = json.load(open(os.path.join(dataset_dir, "via_region_data.json")))
+	download pretrained model on coco data set - mask_rcnn_coco.h5 in 	folder ObjectDetection
+
+change number of epoch
+	bollard.py
+	model.train(dataset_train, dataset_val,
+                learning_rate=config.LEARNING_RATE,
+                epochs=30, # change this number
+                layers='heads')
+change number of training step per epoch
+	bollard.py
+	 # Number of training steps per epoch
+    	STEPS_PER_EPOCH = 100 # change this
+add more objects to detect
+	bollard.py
+	#self.add_class("balloon", 2, "cakes") #aj add the objects you want to detect
+
+to remove - UserWarning: Converting sparse IndexedSlices
+	in bollard.py -- 
+	import warnings 
+	warnings.filterwarnings('ignore') [does not work]
+did the following changs:
+	utils.py
+		added - from skimage import transform
+		changed - skimage.transform.resize to transform.resize (line 		909, 915). Look for 'AJ'
+model.py
+	multiprocessing.cpu_count() see comments - aj
+
+to train from initial coco weight- type in Anaconda terminal - python bollard.py train --dataset=images\ --weights=coco
+for other options see - https://github.com/akTwelve/Mask_RCNN
+
+To detect the bollard upon the trained weights / model
+	copy the weights from logs folder to ObjectDetection folder
+	bollard_detection.py
+		change the weights: # load coco model weights
+		rcnn.load_weights(r'C:\Users\ajitj\OneDrive - Universitetet i Agder\Teaching\MasterProgram\Applied ML and Robotics\MAS512-G_AJ_2021\CNN_ML		\ObjectDetection\mask_rcnn_balloon_0003.h5', by_name=True)
+		change the image: img = load_img('image_22_scaled.png')
+
+
+
+
+
+
