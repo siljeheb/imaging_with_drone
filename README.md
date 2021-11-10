@@ -79,3 +79,22 @@ When the installing is done, open the app and plug the camera in the USB port of
 
 
 ## Computer vision
+Start by making a folder named "object detection". Create a new folder called "images" inside "object detection". In the folder "images", make two new folders called "train" and "val". Place 20 images in train, 20 in val and 10 in object detection. 
+
+Label the object in the images and annotate the images in VGG Image Annotator (VIA) at https://www.robots.ox.ac.uk/~vgg/software/via/via.html.
+Uploade the pictures form the folder "train" and choose the polygon opion and lable the object. When the object is labeled, use attributes to name the object and press toggle annotation editor to use the attribute. Then save the file as "via_region_data.json". Place this file in the folder "train" and do the same procedure for the images in the "val" folder and place the "via_region_data.json" file for them in the same folder.
+![object-labeling](https://user-images.githubusercontent.com/93716653/141098079-a2a9b670-6cf0-4755-bec7-ba5a0015cf88.PNG)
+
+To train the images. Install Anaconda Navigator 4.8.3 and make an own environment in here. Install Spyder 3.3.6 in Anaconda, which is the program used to code in Python 3.7 and install Tensorflow 2 and skikit 0.16.2.
+<img width="1420" alt="Skjermbilde 2021-11-10 kl  11 42 08" src="https://user-images.githubusercontent.com/93716653/141098796-069adaa2-0aca-4764-84e6-a06110718ad1.png">
+
+Pyton codes with pre-traind coco models "mask\_rcnn\_coco.h5" were provided by the University of Agder, consisting of two files; "bollard.py" and "bollard\_detection.py". These files need to be put in the object detcetion folder. The files cam be seen in this github room. 
+
+Open the terminal in Anaconda and change the path to the object detection folder. Start the training with the command "python bollard.py train --dataset=images\ --weights=coco". This command runs through 10 epoch, with 9 training steps per epoch. In total the training is running 90 times. 
+![terminal2](https://user-images.githubusercontent.com/93716653/141100222-d5cddd70-54bb-4f08-a1bc-3180846e4ace.PNG)
+![terminal5](https://user-images.githubusercontent.com/93716653/141100233-3a1e1a5d-3700-40d1-934c-93d64521fe5b.PNG)
+
+When the training is done. Go to the folder logs in object detection and take the latest file and place it in the object detection folder. Now place the same file in the "bollard_detection.py" file and place on of the images in the object detection folder in this file. Then press run. The file sould run and the object detection should be done. 
+![Skjermbilde-pythonscreen](https://user-images.githubusercontent.com/93716653/141100486-fbda1659-b6b7-4e1b-bb44-bfbeaaf0db32.PNG)
+
+
