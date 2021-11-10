@@ -33,7 +33,8 @@ Use the Socket cap screw (M3*8,8pcs) to attach the Landing gear-Vertical pole to
 The pictures in these steps are borrowed from the Holybro X500 assamble manual to get an easier understandig of how to assamble the drone (http://www.holybro.com/manual/Holybro_X500_FrameKit_AssemblyGuide.pdf).
 
 After these steps are done, the wires to the motors needs to be attached. The red wire goes on the red wire, black on black, and the blur wore from the motors goes on the yellow and black twisted wire which are connected to the power module. Pixhawk 4 is going to be mounted on the top plate and so are the GPS tower and the telemerty radio.
-![IMG_4363](https://user-images.githubusercontent.com/93716653/141090083-651878cb-9613-4349-82fd-174f46ba61b2.jpeg)
+<img width="541" alt="Skjermbilde 2021-11-10 kl  10 48 27" src="https://user-images.githubusercontent.com/93716653/141090286-f05a6a30-4b2d-4cf4-8f43-8ed96c9547dd.png">
+
 
 
 ## Connect to QGroundControl and remote controller
