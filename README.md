@@ -70,8 +70,12 @@ Now it's time to fly the drone.
 
 
 ## Thermal camera setup
+The thermal camera used is a LWIR Lepton 2.5 thermal camera form Flir. 
+![bilde](https://user-images.githubusercontent.com/93716653/141095818-e9caf765-f32e-46e3-97bd-b7295250fb4e.png)
 
-
+The first thing to do is to download Flir Lepton Application at https://lepton.flir.com/software-sdk/. 
+When the installing is done, open the app and plug the camera in the USB port of the computer. Now the camera should connect and the image should show on the screen. Then the camera is ready to take pictures just by clicking on "take snapshot".
+![thermal-image](https://user-images.githubusercontent.com/93716653/141096533-c1c76f43-3cf9-4013-9a62-343739ea1aba.PNG)
 
 
 ## Computer vision
