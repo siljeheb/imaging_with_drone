@@ -27,10 +27,15 @@ Attach the Power module to the center of the bottom plate. Then take the fiber c
 
 
 Step 5:
-Use the Socket cap screw (M3*8,8pcs) to attach the Landing gear-Vertical pole to the bottom plate. Attach the Landing gear-cross bar to the bottom of the vertical pole.
+Use the Socket cap screw (M3*8,8pcs) to attach the Landing gear-Vertical pole to the bottom plate. Attach the Landing gear-cross bar to the bottom of the vertical pole. Skrew the propellers on, silver mark on counter-clockwise and black on clockwise rotation.
 <img width="752" alt="Skjermbilde 2021-11-10 kl  10 31 19" src="https://user-images.githubusercontent.com/93716653/141088185-37104160-221d-4d7f-8556-4d4c57b8e381.png">
 
-The pictures in these steps are borrowed from the manual to get an easier understandig of how to assamble the drone.
+The pictures in these steps are borrowed from the Holybro X500 assamble manual to get an easier understandig of how to assamble the drone (http://www.holybro.com/manual/Holybro_X500_FrameKit_AssemblyGuide.pdf).
+
+After these steps are done, the wires to the motors needs to be attached. The red wire goes on the red wire, black on black, and the blur wore from the motors goes on the yellow and black twisted wire which are connected to the power module. Pixhawk 4 is going to be mounted on the top plate and so are the GPS tower and the telemerty radio.
+![IMG_4363](https://user-images.githubusercontent.com/93716653/141089902-0d488d04-3a62-45e1-94cd-cdff598cfc19.png)
+
+
 
 ## Connect to QGroundControl and remote controller
 
